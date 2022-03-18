@@ -16,8 +16,12 @@ import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
+import MarketScreen from '../screens/MarketScreen';
+import WalletScreen from '../screens/WalletScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
+
+import { Entypo } from '@expo/vector-icons';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -58,7 +62,7 @@ function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="TabWallet"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}>
@@ -90,6 +94,22 @@ function BottomTabNavigator() {
         options={{
           title: 'Tab Two',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="TabMarket"
+        component={MarketScreen}
+        options={{
+          title: 'Market',
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="TabWallet"
+        component={WalletScreen}
+        options={{
+          title: 'Wallet',
+          tabBarIcon: ({ size,color }) => <Entypo name="wallet" size={size} color={color} />,
         }}
       />
     </BottomTab.Navigator>
