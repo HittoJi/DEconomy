@@ -18,6 +18,8 @@ import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import MarketScreen from '../screens/MarketScreen';
 import WalletScreen from '../screens/WalletScreen';
+import NewWalletScreen from '../screens/NewWalletScreen';
+import CointDetailsScreen from '../screens/CointDetailsScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 
@@ -46,6 +48,8 @@ function RootNavigator() {
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
+        <Stack.Screen name="NewWallet" component={NewWalletScreen} />
+        <Stack.Screen name="CointDetails" component={CointDetailsScreen} />
       </Stack.Group>
     </Stack.Navigator>
   );
@@ -62,7 +66,7 @@ function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabWallet"
+      initialRouteName="TabMarket"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}>
