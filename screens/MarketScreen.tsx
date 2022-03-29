@@ -33,7 +33,7 @@ export default function MarketScreen({ navigation }: RootTabScreenProps<'TabMark
 
   return (
     <View style={styles.container} >
-      <SearchBar />
+      {/* <SearchBar /> */}
       <Text style={styles.top10}>TOP {topCoint.length}</Text>
       <View style={styles.containerHorizontal}>
         <FlatListConts topCoint={topCoint} navigation={navigation} />

@@ -4,7 +4,7 @@ import { StyleSheet, FlatList, Text } from 'react-native';
 import TopCard from './TopCard';
 
 
-const FlatListConts = ({ topCoint, navigation }) => (
+const FlatListConts = ({ topCoint, navigation }: any) => (
 
     <FlatList
         data={topCoint}

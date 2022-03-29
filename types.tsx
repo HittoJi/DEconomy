@@ -20,6 +20,7 @@ export type RootStackParamList = {
   Market: undefined;
   NewWallet: undefined;
   CointDetails: undefined;
+  ModalMarketSearch: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
@@ -33,6 +34,7 @@ export type RootTabParamList = {
   TabMarket: undefined;
   TabWallet: undefined;
   TabContDetails: undefined;
+  ModalMarketSearch: undefined;
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<

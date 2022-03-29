@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, Button } from "react-n
 import { Ionicons } from '@expo/vector-icons';
 import Navigation from '../navigation';
 
-const TopCard = ({ coin, navigation }) => (
+const TopCard = ({ coin, navigation }: any) => (
     <TouchableOpacity onPress={() => {
         navigation.navigate('CointDetails', {
             coinId: coin.id,

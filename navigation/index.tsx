@@ -13,6 +13,7 @@ import { ColorSchemeName, Pressable } from 'react-native';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import ModalScreen from '../screens/ModalScreen';
+import ModalMarketSearch from '../screens/ModalMarketSearch';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
@@ -48,6 +49,7 @@ function RootNavigator() {
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
+        <Stack.Screen name="ModalMarketSearch" component={ModalMarketSearch} />
         <Stack.Screen name="NewWallet" component={NewWalletScreen} />
         <Stack.Screen name="CointDetails" component={CointDetailsScreen} />
       </Stack.Group>
@@ -103,17 +105,31 @@ function BottomTabNavigator() {
       <BottomTab.Screen
         name="TabMarket"
         component={MarketScreen}
-        options={{
+        options={({ navigation }: RootTabScreenProps<'TabMarket'>) => ({
           title: 'Market',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
+          headerRight: () => (
+            <Pressable
+              onPress={() => navigation.navigate('ModalMarketSearch')}
+              style={({ pressed }) => ({
+                opacity: pressed ? 0.5 : 1,
+              })}>
+              <FontAwesome
+                name="search"
+                size={25}
+                color={Colors[colorScheme].text}
+                style={{ marginRight: 15 }}
+              />
+            </Pressable>
+          ),
+        })}
       />
       <BottomTab.Screen
         name="TabWallet"
         component={WalletScreen}
         options={{
           title: 'Wallet',
-          tabBarIcon: ({ size,color }) => <Entypo name="wallet" size={size} color={color} />,
+          tabBarIcon: ({ size, color }) => <Entypo name="wallet" size={size} color={color} />,
         }}
       />
     </BottomTab.Navigator>
