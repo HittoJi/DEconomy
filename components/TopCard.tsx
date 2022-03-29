@@ -2,46 +2,16 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, Button } from "react-native";
 
 import { Ionicons } from '@expo/vector-icons';
+import Navigation from '../navigation';
 
-// const renderPrice_change_percentage_24h = (coin: { price_change_percentage_24h: number | null; }) => {
-//     return ([
-//         coin.price_change_percentage_24h != null ?
-//             <Text
-//                 style={[coin.price_change_percentage_24h > 0
-//                     ? styles.coinPercentUp : styles.coinPercentDown,]}
-//             >
-//                 {coin.price_change_percentage_24h.toFixed(2)}% </Text>
-//             : null,
-
-//         coin.price_change_percentage_24h != null ?
-//             coin.price_change_percentage_24h > 0
-//                 ? <Ionicons name="ios-stats-chart" size={18} color="#00FF7F" />
-//                 : <Ionicons name="ios-stats-chart" size={18} color="#FC4422" />
-//             : null,
-//     ]);
-// };
-
-// {
-//     [coin.price_change_percentage_24h > 0
-//         ? [
-//             <Text style={styles.coinPercentUp}>{coin.price_change_percentage_24h} %</Text>,
-//             <Ionicons name="ios-stats-chart" size={18} color="#00FF7F" />
-//         ]
-//         : [
-//             <Text style={styles.coinPercentDown}>{coin.price_change_percentage_24h} %</Text>,
-//             <Ionicons name="ios-stats-chart" size={18} color="#FC4422" />
-//         ]
-//         ,]
-// }
-
-const CharCard = ({ coin, navigation }) => (
+const TopCard = ({ coin, navigation }) => (
     <TouchableOpacity onPress={() => {
         navigation.navigate('CointDetails', {
             coinId: coin.id,
-            navigation: navigation,
+            // navigation: navigation,
         });
     }} >
-        <View style={styles.charCard}>
+        <View style={styles.TopCard}>
             <View style={styles.top}>
                 {/* <Text style={styles.coinName}>{coin.id}</Text> */}
                 <Image style={styles.cointLogo} source={{ uri: coin.image }} />
@@ -66,7 +36,7 @@ const CharCard = ({ coin, navigation }) => (
 
 const styles = StyleSheet.create({
     //-------------View-------------------
-    charCard: {
+    TopCard: {
         flexDirection: 'column',
         backgroundColor: '#708090',
         width: 170,
@@ -130,4 +100,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default CharCard;
+export default TopCard;

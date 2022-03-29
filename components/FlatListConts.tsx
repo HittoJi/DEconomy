@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios";
 import { StyleSheet, FlatList, Text } from 'react-native';
-import CharCard from '../components/CharCard';
+import TopCard from './TopCard';
 
 
-const Top10Coints = ({ topCoint, navigation }) => (
+const FlatListConts = ({ topCoint, navigation }) => (
 
     <FlatList
         data={topCoint}
         horizontal
         showsHorizontalScrollIndicator={true}
         renderItem={({ item }) => {
-            return <CharCard coin={item} navigation={navigation} />
+            return <TopCard coin={item} navigation={navigation} />
         }}
     />
 );
@@ -24,4 +24,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Top10Coints;
+export default FlatListConts;

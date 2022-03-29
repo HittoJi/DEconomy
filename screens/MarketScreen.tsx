@@ -8,9 +8,9 @@ import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 import SearchBar from '../components/SearchBar';
-import Top10Coints from '../components/Top10Coints';
+import FlatListConts from '../components/FlatListConts';
 
-export default function MarketScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
+export default function MarketScreen({ navigation }: RootTabScreenProps<'TabMarket'>) {
   const [isLoading, setIsLoading] = useState(false);
   const [topCoint, setTopCoint] = useState([]);
 
@@ -36,9 +36,8 @@ export default function MarketScreen({ navigation }: RootTabScreenProps<'TabOne'
       <SearchBar />
       <Text style={styles.top10}>TOP {topCoint.length}</Text>
       <View style={styles.containerHorizontal}>
-        <Top10Coints topCoint={topCoint} navigation={navigation} />
+        <FlatListConts topCoint={topCoint} navigation={navigation} />
       </View>
-
     </View>
   );
 }
