@@ -8,14 +8,6 @@ import { RootTabScreenProps } from '../types';
 import CointDetailsMarket from '../components/Market/Details/CointDetailsMarket';
 import DescriptionReadMore from '../components/Market/Details/DescriptionReadMore';
 
-
-
-
-
-
-
-
-// export default function CointDetailsScreen({ route, navigation }) {
 export default function CointDetailsScreen({ route, navigation }: RootTabScreenProps<'TabContDetails'>) {
     React.useLayoutEffect(() => {
         navigation.setOptions({
@@ -30,8 +22,15 @@ export default function CointDetailsScreen({ route, navigation }: RootTabScreenP
         {
             name: "", market_cap_rank: "", current_price: "", webSite: "",
             ath: "", ath_change_percentage: "", ath_date: "", market_cap: "",
-            description: "", image: "",
+            description: "", image: "", total_supply: "", max_supply: "",
+            circulating_supply: "", last_updated: "", fully_diluted_valuation: "",
+            total_volume: "",
         });
+
+    const formatDate = (date: string) => {
+        let dateV = new Date(date)
+        return dateV.getDay() + "/" + dateV.getMonth() + "/" + dateV.getFullYear() + " - " + dateV.getMinutes() + ":" + dateV.getHours();
+    }
 
     const loadCoint = () => {
         setIsLoading(true);
@@ -39,6 +38,7 @@ export default function CointDetailsScreen({ route, navigation }: RootTabScreenP
         axios.get(`https://api.coingecko.com/api/v3/coins/${coinId}`)
             .then(res => {
                 if (res.status == 200) {
+                    let dateV;
                     coint.name = res.data.name;
                     coint.description = res.data.description.en;
                     coint.market_cap_rank = res.data.market_cap_rank;
@@ -46,10 +46,15 @@ export default function CointDetailsScreen({ route, navigation }: RootTabScreenP
                     coint.current_price = res.data.market_data.current_price.usd;
                     coint.ath = res.data.market_data.ath.usd;
                     coint.ath_change_percentage = res.data.market_data.ath_change_percentage.usd;
-                    coint.ath_date = res.data.market_data.ath_date.usd;
-                    let cosas = new Date(coint.ath_date)
-                    coint.ath_date = cosas.getDay() + "/" + cosas.getMonth() + "/" + cosas.getFullYear() + " - " + cosas.getMinutes() + ":" + cosas.getHours();
+                    coint.ath_date = formatDate(res.data.market_data.ath_date.usd);
                     coint.market_cap = res.data.market_data.market_cap.usd;
+                    coint.total_supply = res.data.market_data.total_supply;
+                    coint.max_supply = res.data.market_data.max_supply;
+                    coint.circulating_supply = res.data.market_data.circulating_supply;
+                    coint.last_updated = formatDate(res.data.market_data.last_updated);
+                    coint.fully_diluted_valuation = res.data.market_data.fully_diluted_valuation.usd;
+                    coint.total_volume = res.data.market_data.total_volume.usd;
+
                     coint.image = res.data.image.thumb;
                     //--Add more market_data
 
@@ -57,7 +62,7 @@ export default function CointDetailsScreen({ route, navigation }: RootTabScreenP
                     //------------
                     setIsLoading(false);
                     console.log("---------");
-                    // console.log(coint);
+
                 } else {
                     console.log("get data fall");
                 }
@@ -68,7 +73,7 @@ export default function CointDetailsScreen({ route, navigation }: RootTabScreenP
     }, []);
 
 
-    const dollarUSLocale = Intl.NumberFormat('en-US');
+    const dollarUSLocale = Intl.NumberFormat('es-ES');
 
     return (
         <View style={styles.container}>
