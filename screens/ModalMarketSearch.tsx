@@ -6,9 +6,9 @@ import CoinItem from '../components/Market/Search/CoinItem';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
 import { Ionicons } from '@expo/vector-icons';
-import { Feather } from '@expo/vector-icons';
-import { Entypo } from '@expo/vector-icons';
 
 
 export default function ModalMarketSearch(this: any, { route, navigation }: RootTabScreenProps<'ModalMarketSearch'>) {
@@ -18,24 +18,23 @@ export default function ModalMarketSearch(this: any, { route, navigation }: Root
         });
     });
 
+    const [isFirstLoad, setIsFirstLoad] = useState(true);
     const [isLoading, setIsLoading] = useState(false);
     const [coinsS, setCoinsS] = useState([]);
-    const [testtext, setTesttext] = useState();
+    const [searchText, setsearchText] = useState();
 
 
     //----------------------------------------------------------------
     const loadCoint = () => {
         setIsLoading(true);
 
-        axios.get(`https://api.coingecko.com/api/v3/search?query=${testtext}`)
+        axios.get(`https://api.coingecko.com/api/v3/search?query=${searchText}`)
             .then(res => {
                 if (res.status == 200) {
                     setCoinsS(Object.values(res.data)[0]);
                     setIsLoading(false);
                     console.log("---------");
-                    console.log(testtext);
-                    // console.log(coinsS.length);
-
+                    // console.log(searchText);
                 } else {
                     console.log("get data fall");
                 }
@@ -43,12 +42,27 @@ export default function ModalMarketSearch(this: any, { route, navigation }: Root
     }
     useEffect(() => {
         loadCoint();
-    }, [testtext]);
+        if (isFirstLoad) {
+            loadLastSearch();
+            setIsFirstLoad(false);
+        }
+    }, [searchText]);
+
+    const saveLastSearch = async () => {
+        await AsyncStorage.setItem('lastSearch', searchText);
+        loadCoint();
+    }
+
+    const loadLastSearch = async () => {
+        var cosas = await AsyncStorage.getItem('lastSearch');
+        if (cosas.length > 0) {
+            setsearchText(cosas);
+        }
+    }
+
     //----------------------------------------------------------------
     const eraseText = () => {
         console.log("eraseText");
-        // this.pop
-        console.log();
     }
 
     return (
@@ -58,12 +72,9 @@ export default function ModalMarketSearch(this: any, { route, navigation }: Root
                 <View style={styles.SearchbarBackground}>
                     <TextInput
                         style={styles.searchbar}
-                        onChangeText={(value: string) => setTesttext(value)}
-                        onSubmitEditing={loadCoint}
-                        autoFocus={true}
-                    // value={number}
-                    // placeholder="Coint name"
-                    />
+                        onChangeText={(value: string) => setsearchText(value)}
+                        onSubmitEditing={saveLastSearch}
+                        autoFocus={true} />
                     <Button
                         onPress={eraseText}
                         title="X"

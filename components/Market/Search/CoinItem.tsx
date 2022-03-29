@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 
-const CoinItem = ({ coin }) => (
+const CoinItem = ({ coin }: any) => (
     <View style={styles.container}>
         <Image source={{ uri: coin.thumb }} style={styles.image} />
         <View style={styles.nameContainer}>
