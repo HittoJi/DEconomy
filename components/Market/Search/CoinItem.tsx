@@ -1,14 +1,24 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 
-const CoinItem = ({ coin }: any) => (
-    <View style={styles.container}>
-        <Image source={{ uri: coin.thumb }} style={styles.image} />
-        <View style={styles.nameContainer}>
-            <Text style={styles.coinName}>{coin.name}</Text>
-            <Text style={styles.coinSymbol}>{coin.symbol}</Text>
+
+const CoinItem = ({ coin, navigation }: any) => (
+    <TouchableOpacity onPress={() => {
+        navigation.navigate('CointDetails', {
+            coinId: coin.id,
+            // navigation: navigation,
+        });
+        // setsearchText(coin.id);
+    }} >
+        <View style={styles.container}>
+            <Image source={{ uri: coin.thumb }} style={styles.image} />
+            <View style={styles.nameContainer}>
+                <Text style={styles.coinName}>{coin.name}</Text>
+                <Text style={styles.coinSymbol}>{coin.symbol}</Text>
+            </View>
         </View>
-    </View>
+    </TouchableOpacity>
+
 );
 
 const styles = StyleSheet.create({

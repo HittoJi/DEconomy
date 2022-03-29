@@ -25,6 +25,7 @@ import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../typ
 import LinkingConfiguration from './LinkingConfiguration';
 
 import { Entypo } from '@expo/vector-icons';
+import { Fontisto } from '@expo/vector-icons';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -72,7 +73,7 @@ function BottomTabNavigator() {
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}>
-      <BottomTab.Screen
+      {/* <BottomTab.Screen
         name="TabOne"
         component={TabOneScreen}
         options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
@@ -101,13 +102,13 @@ function BottomTabNavigator() {
           title: 'Tab Two',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
-      />
+      /> */}
       <BottomTab.Screen
         name="TabMarket"
         component={MarketScreen}
         options={({ navigation }: RootTabScreenProps<'TabMarket'>) => ({
           title: 'Market',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ size, color }) => <Fontisto name="area-chart" size={size} color={color} />,
           headerRight: () => (
             <Pressable
               onPress={() => navigation.navigate('ModalMarketSearch')}

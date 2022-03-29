@@ -86,7 +86,7 @@ export default function ModalMarketSearch(this: any, { route, navigation }: Root
                 style={styles.list}
                 data={coinsS}
                 showsVerticalScrollIndicator={false}
-                renderItem={({ item }) => <CoinItem coin={item} />}
+                renderItem={({ item }) => <CoinItem coin={item} navigation={navigation} />}
             />
         </View>
     );
