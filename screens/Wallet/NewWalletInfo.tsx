@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet, FlatList } from 'react-native';
+import { Platform, StyleSheet, FlatList, ScrollView } from 'react-native';
 
 import Info from '../../components/Wallet/NewWalletInfo';
 import { View } from '../../components/Themed';
@@ -10,7 +10,6 @@ import { RootTabScreenProps } from '../../types';
 export default function NewWalletInfo({ route }: RootTabScreenProps<'TabContDetails'>) {
     const { obj }: any = route.params;
     return (
-        // <ScrollView>
         <View style={styles.container}>
             <FlatList
                 data={obj}
@@ -21,7 +20,6 @@ export default function NewWalletInfo({ route }: RootTabScreenProps<'TabContDeta
             />
             <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
         </View>
-        // </ScrollView>
     );
 }
 

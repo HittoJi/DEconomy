@@ -11,9 +11,9 @@ const Info = ({ item }: any) => (
         <Text style={styles.title}>{item.label}</Text>
         <QRCode value={item.data} />
         <TouchableOpacity onPress={() => {
-            console.log("Gola");
+            Clipboard.setString(item.data);
         }}>
-            <Text style={styles.desciption}>{item.data}<AntDesign name="copy1" size={24} color="black" selectable={true}/></Text>
+            <Text style={styles.desciption}>{item.data}<AntDesign name="copy1" size={24} color="gray" selectable={true}/></Text>
         </TouchableOpacity>
     </View >
 );
@@ -24,12 +24,16 @@ const styles = StyleSheet.create({
         width: '100%',
         textAlign: 'center',
         padding: 5,
+        color: 'gray',
     },
     desciption: {
         fontSize: 20,
         fontWeight: 'bold',
         textAlign: 'center',
-        padding: 20,
+        paddingLeft: 10,
+        paddingRight: 10,
+        paddingTop: 10,
+        color: 'gray',
     },
     infoContainer: {
         width: '100%',

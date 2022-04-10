@@ -73,7 +73,7 @@ function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabMarket"
+      initialRouteName="TabWallet"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}>

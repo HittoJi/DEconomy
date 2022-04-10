@@ -25,11 +25,11 @@ export default function NewWalletScreen({ navigation }: RootTabScreenProps<'TabO
     }
 
 
-    // const openWindowNewWallet = (obj: Object) => {
-    //     navigation.navigate('NewWalletInfo', {
-    //         obj: obj,
-    //     });
-    // }
+    const openWindowNewWallet = (obj: Object) => {
+        navigation.navigate('NewWalletInfo', {
+            obj: obj,
+        });
+    }
     const [menus, setReviews] = useState([
         { key: '1', label: "Bitcoin", img: 'https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579', fun: newBitcoinWallet, service: "/api/new-btc-wallet" },
         { key: '2', label: "Solana", img: 'https://assets.coingecko.com/coins/images/4128/large/solana.png?1640133422', fun: newSolanaWallet },
