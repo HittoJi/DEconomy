@@ -19,6 +19,8 @@ export type RootStackParamList = {
   NotFound: undefined;
   Market: undefined;
   NewWallet: undefined;
+  NewWalletInfo: undefined;
+  ConnectWallet: undefined;
   CointDetails: undefined;
   ModalMarketSearch: undefined;
 };
@@ -34,6 +36,7 @@ export type RootTabParamList = {
   TabMarket: undefined;
   TabWallet: undefined;
   TabContDetails: undefined;
+  NewWalletInfo: undefined;
   ModalMarketSearch: undefined;
 };
 

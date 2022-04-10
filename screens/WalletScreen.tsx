@@ -11,7 +11,7 @@ import Card from '../components/Card';
 export default function WalletScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
     const [menus, setReviews] = useState([
         { text: 'Create your wallet', text2: 'New to the decentralized world? \nCreate your seed phrase in the safest way possible with DEconomy!', img: 'create-new-folder', key: '1', tabOpen: "NewWallet", hidden: false },
-        { text: 'Connect to your wallet', text2: 'Alredy have a seed phrase? \nConnect to your favorite wallet!', img: 'folder-open', key: '2', tabOpen: "Modal", hidden: false },
+        { text: 'Connect to your wallet', text2: 'Alredy have a seed phrase? \nConnect to your favorite wallet!', img: 'folder-open', key: '2', tabOpen: "ConnectWallet", hidden: false },
     ]);
 
     return (
@@ -31,7 +31,7 @@ export default function WalletScreen({ navigation }: RootTabScreenProps<'TabOne'
 
 const styles = StyleSheet.create({
     container: {
-        // flex: 1,
+        flex: 1,
         alignItems: 'center',
         height: '100%',
     },

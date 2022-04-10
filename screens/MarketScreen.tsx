@@ -10,6 +10,9 @@ import { RootTabScreenProps } from '../types';
 import SearchBar from '../components/SearchBar';
 import FlatListConts from '../components/FlatListConts';
 
+import 'intl';
+import 'intl/locale-data/jsonp/en';
+
 export default function MarketScreen({ navigation }: RootTabScreenProps<'TabMarket'>) {
   const [isLoading, setIsLoading] = useState(false);
   const [topCoint, setTopCoint] = useState([]);

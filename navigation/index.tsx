@@ -20,6 +20,8 @@ import TabTwoScreen from '../screens/TabTwoScreen';
 import MarketScreen from '../screens/MarketScreen';
 import WalletScreen from '../screens/WalletScreen';
 import NewWalletScreen from '../screens/NewWalletScreen';
+import NewWalletInfo from '../screens/Wallet/NewWalletInfo';
+import ConnectWallet from '../screens/Wallet/ConnectWallet';
 import CointDetailsScreen from '../screens/CointDetailsScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
@@ -52,6 +54,8 @@ function RootNavigator() {
         <Stack.Screen name="Modal" component={ModalScreen} />
         <Stack.Screen name="ModalMarketSearch" component={ModalMarketSearch} />
         <Stack.Screen name="NewWallet" component={NewWalletScreen} />
+        <Stack.Screen name="ConnectWallet" component={ConnectWallet} />
+        <Stack.Screen name="NewWalletInfo" component={NewWalletInfo} />
         <Stack.Screen name="CointDetails" component={CointDetailsScreen} />
       </Stack.Group>
     </Stack.Navigator>
